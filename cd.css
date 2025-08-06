@@ -1,0 +1,82 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    background-image: url('assents/pencil-4862977.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0;
+    color: white;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* Estiliza o container do formulário */
+.container {
+  max-width: 400px; 
+  background-color: rgba(0, 0, 0, 0.75); 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  padding: 2rem;
+}
+
+/* Estiliza o título LOGIN */
+h2 {
+  font-weight: bold;
+  color: #ffffff; 
+}
+
+/* Estiliza os campos de input */
+.form-control {
+  background-color: #f8f9fa; 
+  border: 1px solid #ced4da; 
+  color: #333; 
+}
+
+.form-control::placeholder {
+  color: #6c757d; 
+  opacity: 1; 
+}
+
+/* Estiliza o botão Entrar */
+.btn-primary {
+  background-color: #007bff; 
+  border: none; 
+  padding: 10px; 
+  font-weight: bold; 
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+
+.link-light {
+  color: #ffffff; 
+  transition: color 0.2s; 
+}
+
+.link-light:hover {
+  color: #cccccc; 
+  text-decoration: underline;
+}
+
+/* Garante que os links sejam exibidos em linhas separadas */
+.text-center p {
+  margin: 5px 0; 
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 576px) {
+  .container {
+    margin: 1rem; 
+    padding: 1.5rem; 
+  }
+}

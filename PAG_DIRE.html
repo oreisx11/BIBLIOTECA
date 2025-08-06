@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Online - INAH DE MELLO (Direção)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <button class="toggle-btn" onclick="toggleMenu()">
+        <i class="bi bi-list"></i>
+      </button>
+      <h1>INAH DE MELLO</h1>
+    </header>
+
+    <nav class="menuV">
+      <ul>
+        <li><a href="#" onclick="mostrarCadastro()">CADASTRO DE LIVROS</a></li>
+        <li>
+          <a href="#" onclick="mostrarAlterador()">ALTERADOR DE SENHAS</a>
+        </li>
+        <li><a href="#" onclick="mostrarAgendado()">LIVROS AGENDADOS</a></li>
+        <li><a href="index.php">BIBLIOTECA ONLINE</a></li>
+      </ul>
+    </nav>
+
+    <main class="conteudo">
+      <h2>Bem-vindo(a), direção!</h2>
+      <p>Gerencie os cadastros e consultas da biblioteca com facilidade.</p>
+    </main>
+
+    <!-- Modal Cadastro de Livro -->
+    <div id="telaCadastro" class="modalForm">
+      <h3>Cadastro de Livro</h3>
+      <form action="processa_cadastro_livro.php" method="post">
+        <input
+          type="text"
+          name="titulo"
+          placeholder="Título do livro"
+          required
+        />
+        <input type="text" name="autor" placeholder="Autor" required />
+        <select name="indicacao">
+          <option value="">Selecione a indicação</option>
+          <option value="6º ano">6º ano</option>
+          <option value="7º ano">7º ano</option>
+          <option value="8º ano">8º ano</option>
+          <option value="9º ano">9º ano</option>
+          <option value="1º ano EM">1º ano EM</option>
+          <option value="2º ano EM">2º ano EM</option>
+          <option value="3º ano EM">3º ano EM</option>
+        </select>
+        <input
+          type="text"
+          name="disciplina"
+          placeholder="Disciplina"
+          required
+        />
+        <div class="btn-group">
+          <button type="submit">Salvar</button>
+          <button type="button" onclick="fecharCadastro()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal Livros Agendados -->
+    <div id="telaAgendado" class="modalForm">
+      <h3>Livros Agendados</h3>
+      <form action="processa_busca_agendados.php" method="post">
+        <input
+          type="text"
+          name="nome_aluno"
+          placeholder="Nome do aluno"
+          required
+        />
+        <input
+          type="text"
+          name="titulo_livro"
+          placeholder="Título do livro"
+          required
+        />
+        <div class="btn-group">
+          <button type="submit">Pesquisar</button>
+          <button type="button" onclick="fecharAgendado()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal Alterador de Senha -->
+    <div id="telaAlterador" class="modalForm">
+      <h3>Alterador de Senha</h3>
+      <form action="processa_alterar_senha.php" method="post">
+        <input type="email" name="email" placeholder="E-mail" required />
+        <input
+          type="password"
+          name="senha_atual"
+          placeholder="Senha atual"
+          required
+        />
+        <input
+          type="password"
+          name="nova_senha"
+          placeholder="Nova senha"
+          required
+        />
+        <input
+          type="password"
+          name="confirmar_senha"
+          placeholder="Confirmar nova senha"
+          required
+        />
+        <div class="btn-group">
+          <button type="submit">Confirmar nova Senha</button>
+          <button type="button" onclick="fecharAlterador()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <footer class="rodape">
+      <div class="container">
+        <h5>Equipe de Desenvolvimento</h5>
+        <p>
+          <strong
+            >Diretor do projeto e desenvolvedor central FULL-STACK:</strong
+          >
+          Luan de Assis Fabruzzi Rosa
+        </p>
+        <p>
+          <strong>FRONT-END: HTML</strong><br />Victoria Lopes de Melo, Melissa
+          Santos Cruz, Isis do Santos Siqueira
+        </p>
+        <p><strong>FRONT-END: CSS</strong><br />Luan de Assis Fabruzzi Rosa</p>
+        <p>
+          <strong>BACK-END: PHP e PYTHON</strong><br />Luan de Assis Fabruzzi
+          Rosa, Paulo Eduardo Bruno das Chargas Rodrigues
+        </p>
+        <p>
+          <strong>BANCO DE DADOS: SQL</strong><br />Luan de Assis Fabruzzi Rosa
+        </p>
+        <div class="rodape-links">
+          <a href="#">Contato</a> | <a href="#">Sobre</a> |
+          <a href="#">Termos de Uso</a>
+        </div>
+        <p class="assinatura">
+          © 2025 Biblioteca Online INAH DE MELLO. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="funcao.js"></script>
+  </body>
+</html>

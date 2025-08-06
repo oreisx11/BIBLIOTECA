@@ -1,0 +1,478 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estilo geral do corpo */
+body {
+    background-image: url('assents/pencil-4862977.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.85); /* Mais opacidade para destaque */
+    padding: 30px 20px; /* Padding maior */
+    font-size: 42px; /* Título maior */
+    text-align: center;
+    box-shadow: 0 4px 12px #00000080;
+    position: fixed; /* Fixo no topo */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa toda a largura */
+    min-height: 100px; /* Altura mínima */
+    display: flex;
+    justify-content: space-between; /* Espaço para título e busca */
+    align-items: center;
+    z-index: 1001;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 800;
+    flex: 1; /* O título ocupa o espaço disponível */
+}
+
+/* Busca integrada no header (opcional) */
+header .search-bar {
+    flex: 0 0 40%; /* 40% da largura para a busca */
+    margin-right: 20px;
+}
+
+header .search-bar input {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px; /* Input maior */
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+}
+
+/* Estilo do botão para abrir o menu */
+.toggle-btn {
+    font-size: 24px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    color: #ccc;
+}
+
+/* Estilo do menu vertical */
+.menuV {
+    display: none;
+    position: fixed;
+    top: 100px; /* Abaixo do header fixo */
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.85); /* Mais opacidade */
+    width: 350px; /* Menu mais largo */
+    height: calc(100vh - 100px); /* Altura total menos o header */
+    padding: 30px 20px; /* Mais espaço interno */
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.menuV.active {
+    display: block;
+    animation: slideIn 0.5s forwards;
+}
+
+.menuV ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.menuV li {
+    margin: 30px 0; /* Mais espaço entre itens */
+}
+
+.menuV a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px; /* Texto maior */
+    display: block;
+    padding: 20px 25px; /* Mais preenchimento */
+    transition: background-color 0.3s ease;
+    border-radius: 8px; /* Bordas arredondadas para destaque */
+}
+
+.menuV a:hover {
+    background-color: rgba(255, 255, 255, 0.35); /* Efeito mais visível */
+}
+
+/* Animação do menu lateral */
+@keyframes slideIn {
+    from {
+        left: -260px;
+    }
+    to {
+        left: 0;
+    }
+}
+
+/* Estilo do conteúdo principal */
+.conteudo {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.conteudo h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.conteudo p {
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+
+/* Painel de busca */
+.buscalivros {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 40px 20px; /* Mais espaço ao redor */
+    margin-top: 120px; /* Espaço para o header fixo */
+}
+
+#painel-busca {
+    background-color: rgba(0, 0, 0, 0.85); /* Mais opacidade */
+    border-radius: 12px;
+    padding: 30px; /* Mais espaço interno */
+    width: 100%;
+    max-width: 70vw; /* Quase tela cheia, com margens */
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+#painel-busca h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px; /* Título maior */
+}
+
+#painel-busca form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Mais espaço entre elementos */
+}
+
+#painel-busca label {
+    font-weight: normal;
+    margin-bottom: 8px;
+    font-size: 18px; /* Labels maiores */
+    color: #ddd;
+}
+
+#painel-busca input[type="text"],
+#painel-busca select {
+    padding: 15px; /* Inputs maiores */
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 13px; /* Texto maior */
+    outline: none;
+}
+
+#painel-busca input[type="text"]::placeholder {
+    color: #bbb;
+}
+
+#painel-busca input[type="text"]:focus,
+#painel-busca select:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#painel-busca button[type="submit"],
+#painel-busca button[type="reset"] {
+    padding: 15px; /* Botões maiores */
+    font-size: 18px; /* Texto maior */
+    border-radius: 10px;
+}
+
+/* Formulários de login e cadastro */
+.form-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    margin: 20px auto;
+}
+
+.form-container h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-container .input-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 25px;
+    border: 2px solid white;
+    background: transparent;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    outline: none;
+}
+
+.form-container .input-field::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    background: #0074D9;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background: #0056b3;
+}
+
+.form-container .direcao,
+.form-container .esqueci,
+.form-container .jatenho {
+    margin-top: 15px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.form-container .jaacesso {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Modal de cadastro */
+.modalForm {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000;
+    border-radius: 8px;
+    padding: 20px 25px;
+    width: 100%;
+    max-width: 500px;
+    color: #28a745;
+    box-shadow: 0 0 15px rgba(40, 167, 69, 0.5);
+    z-index: 1000;
+    font-size: 14px;
+}
+
+.modalForm h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #28a745;
+}
+
+.modalForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modalForm input[type="text"],
+.modalForm input[type="int"],
+.modalForm input[type="email"],
+.modalForm select {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.modalForm input::placeholder {
+    color: #6fcf97;
+}
+
+.modalForm input:focus,
+.modalForm select:focus {
+    background-color: rgba(40, 167, 69, 0.25);
+    color: #000;
+}
+
+.modalForm button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.modalForm button[type="submit"] {
+    background-color: #28a745;
+}
+
+.modalForm button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.modalForm button[type="button"] {
+    background-color: #6c757d;
+}
+
+.modalForm button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+.modalForm .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Rodapé */
+.rodape {
+    background-color: #212529;
+    color: white;
+    padding: 50px 20px; /* Mais espaço interno */
+    text-align: center;
+    border-top: 3px solid #444; /* Borda mais grossa */
+    width: 100%; /* Ocupa toda a largura */
+    min-height: 200px; /* Altura mínima para maior presença */
+    margin-top: auto; /* Garante que o footer fique no final em layouts flex */
+}
+
+.rodape h5 {
+    font-size: 28px; /* Título maior */
+    margin-bottom: 25px;
+}
+
+.rodape p {
+    font-size: 18px; /* Texto maior */
+    margin: 10px 0;
+}
+
+.rodape .rodape-links {
+    margin: 25px 0;
+}
+
+.rodape .rodape-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 20px; /* Links maiores */
+}
+
+.rodape .rodape-links a:hover {
+    color: #0074D9;
+}
+
+.rodape .assinatura {
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Estilo para resultados da busca */
+.livro {
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.livro strong {
+    font-size: 1.1em;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .toggle-btn {
+        display: block;
+    }
+
+    .menuV {
+        width: 100%;
+    }
+
+    .conteudo h2 {
+        font-size: 20px;
+    }
+
+    .conteudo p {
+        font-size: 14px;
+    }
+
+    #painel-busca {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    #painel-busca h2 {
+        font-size: 18px;
+    }
+
+    #painel-busca input[type="text"],
+    #painel-busca select {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    #painel-busca button {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    .form-container {
+        width: 90%;
+    }
+
+    .modalForm {
+        width: 90%;
+        padding: 15px;
+    }
+}
