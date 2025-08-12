@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url('assents/pencil-4862977.jpg');
+    background-image: url('../images/pencil-4862977.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100vh;

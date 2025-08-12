@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minha Biblioteca Online</title>
+  <link rel="icon" href="LOGO PNG.png" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="../assents/css/style.css"/>
+  <script src="../assents/js/func_api_livros.js" defer></script>
+</head>
+
+<body>
+  <header class="bg-dark bg-opacity-75 py-4">
+     <button class="toggle-btn" onclick="toggleMenu()">
+      <i class="bi bi-list"></i>
+    </button>
+    <div class="container text-center">
+      <h1 class="display-5 text-white">Biblioteca Online do Inah de Mello</h1>
+      <div class="input-group mt-4 w-75 mx-auto">
+        <input type="text" id="searchInput" class="form-control" placeholder="Pesquisar livros..." />
+        <button class="btn btn-primary" onclick="searchBooks()">
+          Pesquisar
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <nav class="menuV">
+    <ul>
+      <li><a href="#" onclick="mostrarCadastro()">CADASTRO DE LIVROS</a></li>
+      <li>
+        <a href="#" onclick="mostrarAlterador()">ALTERADOR DE SENHAS</a>
+      </li>
+      <li><a href="#" onclick="mostrarAgendado()">LIVROS AGENDADOS</a></li>
+      <li><a href="API_LIVROS.html">BIBLIOTECA ONLINE</a></li>
+    </ul>
+  </nav>
+
+  <main class="container mt-5">
+    <div id="booksContainer" class="row g-4 justify-content-center">
+      <!-- Livros aparecerão aqui -->
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <h5>Equipe de Desenvolvimento</h5>
+      <p>
+        <strong>Diretor do projeto e desenvolvedor central FULL-STACK:</strong>
+        Luan de Assis Fabruzzi Rosa
+      </p>
+      <p>
+        <strong>FRONT-END: HTML</strong><br />Victoria Lopes de Melo, Melissa
+        Santos Cruz, Isis do Santos Siqueira
+      </p>
+      <p><strong>FRONT-END: CSS</strong><br />Luan de Assis Fabruzzi Rosa</p>
+      <p>
+        <strong>BACK-END: PHP e PYTHON</strong><br />Luan de Assis Fabruzzi
+        Rosa, Paulo Eduardo Bruno das Chargas Rodrigues
+      </p>
+      <p>
+        <strong>BANCO DE DADOS: SQL</strong><br />Luan de Assis Fabruzzi Rosa
+      </p>
+      <div class="rodape-links">
+        <a href="#">Contato</a> | <a href="#">Sobre</a> |
+        <a href="#">Termos de Uso</a>
+      </div>
+      <p class="assinatura">
+        © 2025 Biblioteca Online INAH DE MELLO. Todos os direitos reservados.
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>

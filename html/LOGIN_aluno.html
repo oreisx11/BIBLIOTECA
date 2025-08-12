@@ -5,20 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca Inah</title>
   <link rel="icon" href="logo inah/LOGO PNG.png" type="image/x-icon">
-  <link rel="stylesheet" href="cd.css">
+  <link rel="stylesheet" href="../assents/css/cd.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   <script src="funcao.js"></script>
 </head>
- <!--NÃO MEXA DQ PRA CIMA-->
+<!--MEXA ND DQ PRA CIMA!!!-->
 
- <!--Tabela de Cadastro do Aluno CONCLUIDA-->
 <body>
   <div class="container bg-dark bg-opacity-75 text-white p-5 rounded shadow" style="max-width: 400px;">
-    <h2 class="text-center mb-4">CADASTRE-SE</h2>
+    <h2 class="text-center mb-4">LOGIN</h2>
 
-    <!--Tabela conectada PHP Nada a mexer.-->
-    <form action="http://localhost/BIBLIOTECA/BACK-END/cadastro.php" method="POST">
+<!--Tabela conectada PHP Nada a mexer.-->
+    <form action="" method="POST">
       <div class="mb-3">
         <input type="text" class="form-control" name="ra" placeholder="RA" required>
       </div>
@@ -28,14 +27,15 @@
       <div class="mb-3">
         <input type="password" class="form-control" name="senha" placeholder="SENHA" required>
       </div>
-      <div class="d-grid">
-        <button type="submit" class="btn btn-primary">CADASTRAR</button>
+      <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-primary">Entrar</button>
       </div>
     </form>
-
+    
     <div class="text-center">
-    <p id="jaacesso" ><a href="LOGIN_aluno.html" class="link-light text-decoration-none">Já tenho acesso</p>
+      <p><a href="cd_direcao.html" class="link-light text-decoration-none">Acesso professor</a></p>
+      <p><a href="cd_aluno.html" class="link-light text-decoration-none">Criar conta</a></p>
+    </div>
   </div>
-
 </body>
-</html> 
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciar Agendamentos - Biblioteca Online</title>
+    <link rel="stylesheet" href="../assents/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" /> <!-- Para o ícone de menu -->
+    <script src="../assents/js/gerenciar_agendamentos.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <button class="toggle-btn" onclick="toggleMenu()">
+            <i class="bi bi-list"></i>
+        </button>
+        <h1>Gerenciar Agendamentos</h1>
+    </header>
+
+    <nav class="menuV">
+        <ul>
+            <li><a href="PAG_DIRE.html">Início</a></li>
+            <li><a href="cd_direcao.html">CADASTRO DE DIREÇÃO</a></li>
+            <li><a href="cd_aluno.html">CADASTRO DE ALUNOS</a></li>
+            <li><a href="API_LIVROS.html">BIBLIOTECA ONLINE</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteudo">
+        <h2>Agendamentos Pendentes e Emprestados</h2>
+        <div id="agendamentosTable">
+            <table id="agendamentosList" class="table"> 
+                <tbody>
+                    <!-- Dados serão preenchidos dinamicamente pelo JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <div id="message" style="color: white; text-align: center; margin-top: 10px;"></div>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <h5>Equipe de Desenvolvimento</h5>
+            <p><strong>Diretor do projeto e desenvolvedor central FULL-STACK:</strong> Luan de Assis Fabruzzi Rosa</p>
+            <p><strong>FRONT-END: HTML</strong><br /></p>
+            <p><strong>FRONT-END: CSS</strong><br /></p>
+            <p><strong>BACK-END: PHP</strong><br /></p>
+            <p><strong>BANCO DE DADOS: SQL</strong><br /></p>
+            <div class="rodape-links">
+                <a href="#">Contato</a> | <a href="#">Sobre</a> | <a href="#">Termos de Uso</a>
+            </div>
+            <p class="assinatura">© 2025 Biblioteca Online INAH DE MELLO. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+BIBLIOTECA INAH DE MELLO
+Este é um sistema de gerenciamento de biblioteca online desenvolvido para a escola INAH DE MELLO. O projeto permite que alunos cadastrem-se, façam login, busquem livros por filtros (autor, título, indicação e disciplina), agendem livros e visualizem seus agendamentos. A direção (professores ou administradores) pode fazer login, cadastrar novos livros, alterar senhas, gerenciar agendamentos pendentes ou emprestados e atualizar status de empréstimos.
+O back-end é 100% em PHP, estruturado para fácil manutenção, com separação de funcionalidades em arquivos dedicados (alunos e direção). Utiliza MySQL como banco de dados, compatível com XAMPP. O front-end é baseado em HTML fornecido, com integração via forms e AJAX para interações dinâmicas.
+Data de desenvolvimento: Agosto de 2025.
+Funcionalidades
+Funcionalidades para Alunos (aluno.php):
+
+Cadastro de aluno (cd_aluno.html).
+Login de aluno (LOGIN_aluno.html).
+Busca de livros com filtros (PAG_ALUNO.html).
+Agendamento de livros.
+Visualização de agendamentos pessoais.
+Alteração de senha.
+Logout.
+
+Funcionalidades para Direção (direcao.php):
+
+Login de direção (cd_direcao.html).
+Cadastro de livros (PAG_DIRE.html).
+Alteração de senha.
+Listagem de agendamentos pendentes e emprestados (gerenciar_agendamentos.html).
+Atualização de status de agendamentos (emprestado/devolvido).
+Logout.
+
+Estrutura do Banco de Dados
+O banco de dados db_biblioteca é composto pelas seguintes tabelas (importe db_biblioteca.sql no phpMyAdmin):
+
+alunos: id_aluno, nome, email, senha, data_cadastro.
+diretores: id_diretor, nome, email, senha, data_cadastro.
+livros: id_livro, titulo, autor, indicacao, disciplina.
+agendamentos: id_agendamento, id_aluno, id_livro, data_agendamento, status (pendente, emprestado, devolvido).
+
+Índices e chaves estrangeiras estão configurados para otimização e integridade.
+Tecnologias
+
+Back-end: PHP 8+ (PDO para conexões seguras, sessões para autenticação, hash BCRYPT para senhas).
+Banco de Dados: MySQL (via XAMPP).
+Front-end: HTML puro (integração com PHP via actions e AJAX).
+Segurança: Validações de entrada, proteção contra SQL injection, autenticação baseada em sessões.
+
+Instalação e Configuração
+
+Instale o XAMPP e inicie Apache + MySQL.
+Crie o banco db_biblioteca no phpMyAdmin e importe db_biblioteca.sql.
+Coloque os arquivos PHP (config.php, aluno.php, direcao.php) e HTML no diretório htdocs/biblioteca do XAMPP.
+Acesse via navegador: http://localhost/biblioteca/LOGIN_aluno.html (exemplo).
+Configure credenciais em config.php se necessário (padrão: localhost, root, senha vazia).
+
+Como Usar
+
+Integração HTML-PHP: Ajuste forms nos HTMLs para apontar para endpoints como aluno.php?action=login (method POST).
+AJAX para Dados Dinâmicos: Use fetch() em JavaScript para chamar ações como aluno.php?action=search_books e atualizar listas/tabelas.
+Exemplo de Chamada: Para buscar livros, envie GET para aluno.php?action=search_books&autor=exemplo&titulo=exemplo.
+Testes: Use Postman para testar endpoints ou acesse diretamente via browser/forms.
+
+Manutenção e Extensões
+
+O código é modular: Adicione novas ações no switch de cada PHP.
+Para mais segurança, adicione CAPTCHA ou HTTPS em produção.
+Erros são retornados em JSON para fácil handling no front-end.
+
+Equipe
+
+Diretor do projeto e desenvolvedor central FULL-STACK: Luan de Assis Fabruzzi Rosa.
+FRONT-END: HTML/CSS.
+BACK-END: PHP.
+BANCO DE DADOS: SQL.
+
+© 2025 Biblioteca Online INAH DE MELLO. Todos os direitos reservados.
+Para contribuições ou issues, contate a equipe de desenvolvimento.

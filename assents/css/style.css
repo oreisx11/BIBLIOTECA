@@ -1,0 +1,421 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estilo geral do corpo */
+body {
+    background-image: url('../images/pencil-4862977.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    font-size: 32px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 1.5em;
+    flex: 1;
+}
+
+/* Busca integrada no header */
+header .search-bar {
+    flex: 0 0 35%;
+    margin-right: 15px;
+}
+
+header .search-bar input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+}
+
+/* Botão de menu */
+.toggle-btn {
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    color: #ccc;
+}
+
+/* Menu vertical */
+.menuV {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    width: 300px;
+    height: calc(100vh - 80px);
+    padding: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.menuV.active {
+    display: block;
+    animation: slideIn 0.5s forwards;
+}
+
+.menuV ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.menuV li {
+    margin: 20px 0;
+}
+
+.menuV a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 12px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.menuV a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Animação do menu */
+@keyframes slideIn {
+    from { left: -260px; }
+    to { left: 0; }
+}
+
+/* Conteúdo principal */
+.conteudo {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 100px auto 20px; /* Espaço para header */
+    min-height: 60vh; /* Altura mínima para empurrar o rodapé */
+}
+
+.conteudo h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.conteudo p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Painel de busca */
+.buscalivros {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+#painel-busca {
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+#painel-busca h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+#painel-busca form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#painel-busca label {
+    font-weight: normal;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #ddd;
+}
+
+#painel-busca input[type="text"],
+#painel-busca select {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+#painel-busca input[type="text"]::placeholder {
+    color: #bbb;
+}
+
+#painel-busca input[type="text"]:focus,
+#painel-busca select:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#painel-busca button[type="submit"],
+#painel-busca button[type="reset"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+/* Formulários de login e cadastro */
+.form-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    margin: 20px auto;
+}
+
+.form-container h2 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.form-container .input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    border: 2px solid white;
+    background: transparent;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    outline: none;
+}
+
+.form-container .input-field::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background: #0074D9;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background: #0056b3;
+}
+
+.form-container .direcao,
+.form-container .esqueci,
+.form-container .jatenho {
+    margin-top: 10px;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.form-container .jaacesso {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Modal de cadastro */
+.modalForm {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1e2a44; /* Azul escuro neutro/tecnológico */
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    color: #00aaff; /* Azul claro visível */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Sombra azulada */
+    z-index: 1000;
+    font-size: 14px;
+}
+
+.modalForm h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #33b5e5; /* Azul médio para destaque */
+}
+
+.modalForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modalForm input[type="text"],
+.modalForm input[type="number"],
+.modalForm input[type="email"],
+.modalForm select {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    background-color: rgba(0, 123, 255, 0.1); /* Azul leve com opacidade */
+    color: #00aaff; /* Azul claro visível */
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.modalForm input::placeholder {
+    color: #66c2ff; /* Azul mais claro para placeholder */
+}
+
+.modalForm input:focus,
+.modalForm select:focus {
+    background-color: #2c4066; /* Azul escuro neutro para foco */
+    color: #00aaff; /* Mantém texto visível */
+}
+
+.modalForm button {
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white;
+}
+
+.modalForm button[type="submit"] {
+    background-color: #007bff; /* Azul padrão Bootstrap */
+}
+
+.modalForm button[type="submit"]:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+.modalForm button[type="button"] {
+    background-color: #4a5e7e; /* Cinza-azulado neutro */
+}
+
+.modalForm button[type="button"]:hover {
+    background-color: #3a4e6e; /* Cinza-azulado mais escuro */
+}
+
+.modalForm .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Rodapé */
+.rodape {
+    background-color: #212529;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #444;
+    width: 100%;
+    min-height: 150px;
+    margin-top: auto; /* Garante que fique no final */
+    padding-bottom: 40px; /* Adiciona espaço extra na parte inferior */
+}
+
+/* Ajuste do container de livros */
+#booksContainer .card {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+}
+
+#booksContainer .card-title {
+  font-size: 1.25rem;
+}
+
+#booksContainer .card-text {
+  font-size: 0.9rem;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .conteudo {
+        min-height: 50vh; /* Ajuste para telas menores */
+    }
+
+    .rodape {
+        padding-bottom: 30px; /* Reduz espaço em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .conteudo {
+        min-height: 40vh; /* Ajuste para telas muito pequenas */
+    }
+
+    .rodape {
+        padding-bottom: 20px; /* Reduz ainda mais em telas pequenas */
+    }
+}
