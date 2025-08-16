@@ -9,7 +9,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     });
     const json = await res.json();
     alert(json.message); // Exibe a resposta do PHP
-    if (json.status === "success") window.location.href = "painel.php"; // redireciona
+    if (json.status === "success") window.location.href = "aluno.php"; // redireciona
   });
 
           // Função para alternar o menu
@@ -40,7 +40,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 
           // Função para mostrar os livros agendados dos Alunos
           // URL base da API (ajuste conforme seu XAMPP)
-const API_URL = 'http://localhost/BIBLIOTECA/php/processamento.php';
+const API_URL = 'http://localhost/BIBLIOTECA/php/aluno.php';
 
 // Função para alternar o menu (assumindo que o menuV está presente)
 function toggleMenu() {

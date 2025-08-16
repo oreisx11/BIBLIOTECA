@@ -17,12 +17,13 @@
     <h2 class="text-center mb-4">ACESSO DO PROFESSOR</h2>
 
      <!--Tabela conectada PHP Nada a mexer.-->
-    <form action="http://localhost/BIBLIOTECA/php/adm.php" method="POST"> 
+    <form action="../php/direcao.php" method="GET"> 
+      <input type="hidden" name="action" value="login">
       <div class="mb-3">
-        <input type="email" class="form-control" name="email_ED" placeholder="EMAIL EDUCACIONAL" required>
+        <input type="email" class="form-control" name="email" placeholder="email" required>
       </div>
       <div class="mb-3">
-        <input type="password" class="form-control" name="senha_ED" placeholder="SENHA" required>
+        <input type="password" class="form-control" name="senha" placeholder="senha" required>
       </div>
       <div class="d-grid">
         <button type="submit" class="btn btn-primary">Entrar</button>

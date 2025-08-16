@@ -17,15 +17,16 @@
     <h2 class="text-center mb-4">LOGIN</h2>
 
 <!--Tabela conectada PHP Nada a mexer.-->
-    <form action="" method="POST">
+    <form action="../php/aluno.php" method="GET">
+      <input type="hidden" name="action" value="login">
       <div class="mb-3">
-        <input type="text" class="form-control" name="ra" placeholder="RA" required>
+        <input type="text" class="form-control" name="nome" placeholder="nome" required>
       </div>
       <div class="mb-3">
-        <input type="email" class="form-control" name="email" placeholder="EMAIL" required>
+        <input type="email" class="form-control" name="email" placeholder="email" required>
       </div>
       <div class="mb-3">
-        <input type="password" class="form-control" name="senha" placeholder="SENHA" required>
+        <input type="password" class="form-control" name="senha" placeholder="senha" required>
       </div>
       <div class="d-grid mb-3">
         <button type="submit" class="btn btn-primary">Entrar</button>

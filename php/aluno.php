@@ -5,7 +5,7 @@
 
 include 'config.php'; // Inclua a configuração do DB
 
-$action = $_GET['action'] ?? $_POST['action'] ?? '';
+$action = strtolower(trim($_GET['action'] ?? $_POST['action'] ?? ''));
 
 switch ($action) {
     case 'register':
@@ -67,13 +67,13 @@ function handleRegisterAluno() {
 }
 
 function handleLoginAluno() {
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
         jsonResponse(['error' => 'Método não permitido'], 405);
     }
 
     global $pdo;
-    $email = $_POST['email'] ?? '';
-    $senha = $_POST['senha'] ?? '';
+    $email = $_GET['email'] ?? '';
+    $senha = $_GET['senha'] ?? '';
 
     if (empty($email) || empty($senha)) {
         jsonResponse(['error' => 'Campos obrigatórios faltando'], 400);

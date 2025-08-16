@@ -1,52 +1,62 @@
 <?php
-// config.php - Arquivo de configuração para conexão com o banco de dados
-// Coloque este arquivo em um diretório raiz ou includes/
+// config.php - Conexão com o banco e funções utilitárias
 
-$host = 'localhost'; // Host do XAMPP (padrão)
-$dbname = 'db_biblioteca'; // Nome do banco de dados
-$username = 'root'; // Usuário padrão do XAMPP MySQL
-$password = ''; // Senha padrão (vazia no XAMPP)
+session_start();
+
+// Headers para API
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+
+// Conexão PDO
+$host = "localhost";
+$dbname = "db_biblioteca"; // nome do seu banco
+$user = "root";
+$pass = "";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Erro na conexão com o banco de dados: " . $e->getMessage());
+    die(json_encode(["error" => "Erro na conexão: " . $e->getMessage()]));
 }
 
-// Funções úteis globais
+// ---------- Funções Utilitárias ----------
+
+// Retornar resposta em JSON
+function jsonResponse($data, $status = 200) {
+    http_response_code($status);
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+// Hash de senha
 function hashPassword($password) {
     return password_hash($password, PASSWORD_BCRYPT);
 }
 
+// Verificar senha
 function verifyPassword($password, $hash) {
     return password_verify($password, $hash);
 }
 
+// Iniciar sessão (se não estiver iniciada)
 function startSession() {
-    if (session_status() == PHP_SESSION_NONE) {
+    if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
 }
 
+// Verificar se usuário está logado
 function isLoggedIn($type) {
     startSession();
     return isset($_SESSION[$type . '_id']);
 }
 
+// Retornar ID do usuário logado
 function getLoggedUserId($type) {
     startSession();
     return $_SESSION[$type . '_id'] ?? null;
 }
 
-function redirect($url) {
-    header("Location: $url");
-    exit;
-}
-
-function jsonResponse($data, $status = 200) {
-    http_response_code($status);
-    echo json_encode($data);
-    exit;
-}
 ?>
