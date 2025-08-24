@@ -38,10 +38,11 @@
   <!-- Modal Cadastro de Livro -->
   <div id="telaCadastro" class="modalForm">
     <h3>Cadastro de Livro</h3>
-    <form action="processa_cadastro_livro.php" method="post">
-      <input type="text" name="titulo" placeholder="Título do livro" required />
-      <input type="text" name="autor" placeholder="Autor" required />
-      <select name="indicacao">
+    <form action="../php/direcao.php" method="POST">
+      <input type="hidden" name="action" value="register_book">
+      <input type="text" name="titulo" placeholder="titulo" required />
+      <input type="text" name="autor" placeholder="autor" required />
+      <input select name="indicacao" placeholder="indicacao" required>
         <option value="">Selecione a indicação</option>
         <option value="6º ano">6º ano</option>
         <option value="7º ano">7º ano</option>
@@ -51,9 +52,9 @@
         <option value="2º ano EM">2º ano EM</option>
         <option value="3º ano EM">3º ano EM</option>
       </select>
-      <input type="text" name="disciplina" placeholder="Disciplina" required />
+      <input type="text" name="disciplina" placeholder="disciplina" required />
       <div class="btn-group">
-        <button type="submit">Salvar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
         <button type="button" onclick="fecharCadastro()">Cancelar</button>
       </div>
     </form>
@@ -62,11 +63,11 @@
   <!-- Modal Alterador de Senha -->
   <div id="telaAlterador" class="modalForm">
     <h3>Alterador de Senha</h3>
-    <form action="../php/processa_alterar_senha.php" method="post">
-      <input type="email" name="email" placeholder="E-mail" required />
-      <input type="password" name="senha_atual" placeholder="Senha atual" required />
-      <input type="password" name="nova_senha" placeholder="Nova senha" required />
-      <input type="password" name="confirmar_senha" placeholder="Confirmar nova senha" required />
+    <form action="../php/direcao.php" method="POST">
+      <input type="hidden" name="action" value="change_password">
+      <input type="email" name="email" placeholder="email" required />
+      <input type="password" name="nova_senha" placeholder="nova_senha" required />
+      <input type="password" name="confirmar_senha" placeholder="confirmar_senha" required />
       <div class="btn-group">
         <button type="submit">Confirmar nova Senha</button>
         <button type="button" onclick="fecharAlterador()">Cancelar</button>

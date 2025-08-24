@@ -33,7 +33,7 @@ switch ($action) {
 
 function handleLoginDirecao() {
     // Verifica se o método da requisição é POST
-    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         jsonResponse(['error' => 'Método não permitido'], 405);
     }
 
@@ -52,50 +52,56 @@ function handleLoginDirecao() {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Verifica credenciais
-    if (!$user || !verifyPassword($senha, $user['senha'])) {
-        jsonResponse(['error' => 'Credenciais inválidas'], 401);
-    }
+    if (!$user || $senha !== $user['senha']) {
+    jsonResponse(['error' => 'Credenciais inválidas'], 401);
+}
 
     // Inicia sessão e armazena ID do diretor
     startSession();
     $_SESSION['diretor_id'] = $user['id_diretor'];
-    jsonResponse(['success' => 'Login realizado com sucesso']);
-}
+    header("Location: ../html/PAG_DIRE.html");
+} 
 
+// Cadastro de livro
 function handleRegisterBook() {
-    // Verifica se o método da requisição é POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         jsonResponse(['error' => 'Método não permitido'], 405);
+        exit;
     }
     
-    // Verifica autenticação
     if (!isLoggedIn('diretor')) {
-        jsonResponse(['error' => 'Não autenticado'], 401);
+        header("Location: ../html/PAG_DIRE.html");
+        exit;
     }
 
     global $pdo;
-    $titulo = $_POST['titulo'] ?? '';
-    $autor = $_POST['autor'] ?? '';
-    $indicacao = $_POST['indicacao'] ?? '';
+    $titulo     = $_POST['titulo'] ?? '';
+    $autor      = $_POST['autor'] ?? '';
+    $indicacao  = $_POST['indicacao'] ?? '';
     $disciplina = $_POST['disciplina'] ?? '';
 
-    // Valida campos obrigatórios
-    if (empty($titulo) || empty($autor) || empty($indicacao)) {
+    if (empty($titulo) || empty($autor) || empty($indicacao) || empty($disciplina)) {
         jsonResponse(['error' => 'Campos obrigatórios faltando'], 400);
+        exit;
     }
 
-    // Insere o livro no banco de dados
-    $stmt = $pdo->prepare("INSERT INTO livros (titulo, autor, indicacao, disciplina) VALUES (:titulo, :autor, :indicacao, :disciplina)");
+    $stmt = $pdo->prepare(
+        "INSERT INTO livros (titulo, autor, indicacao, disciplina) 
+         VALUES (:titulo, :autor, :indicacao, :disciplina)"
+    );
+
     try {
         $stmt->execute([
-            'titulo' => $titulo,
-            'autor' => $autor,
-            'indicacao' => $indicacao,
+            'titulo'     => $titulo,
+            'autor'      => $autor,
+            'indicacao'  => $indicacao,
             'disciplina' => $disciplina
         ]);
-        jsonResponse(['success' => 'Livro registrado com sucesso']);
+        header("Location: ../html/PAG_DIRE.html?sucesso=1");
+        exit;
     } catch (PDOException $e) {
-        jsonResponse(['error' => 'Erro ao registrar livro: ' . $e->getMessage()], 500);
+        header("Location: ../html/PAG_DIRE.html?erro=db");
+        exit;
     }
 }
 
@@ -131,6 +137,45 @@ function handleGetSchedules() {
     jsonResponse(['schedules' => $schedules]);
 }
 
+function handleChangePassword($type) {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        jsonResponse(['error' => 'Método não permitido'], 405);
+    }
+
+    if (!isLoggedIn($type)) {
+        jsonResponse(['error' => 'Não autenticado'], 401);
+    }
+
+    global $pdo;
+    $nova_senha = $_POST['nova_senha'] ?? '';
+    $confirmar_senha = $_POST['confirmar_senha'] ?? '';
+
+    if (empty($nova_senha) || empty($confirmar_senha)) {
+        jsonResponse(['error' => 'Campos obrigatórios faltando'], 400);
+    }
+
+    if ($nova_senha !== $confirmar_senha) {
+        jsonResponse(['error' => 'Senhas não coincidem'], 400);
+    }
+
+    $id = getLoggedUserId($type);
+    $table = $type === 'aluno' ? 'alunos' : 'diretores';
+    $id_field = $type === 'aluno' ? 'id_aluno' : 'id_diretor';
+
+    $stmt = $pdo->prepare("SELECT senha FROM $table WHERE $id_field = :id");
+    $stmt->execute(['id' => $id]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $hashedNova = hashPassword($nova_senha);
+    $stmt = $pdo->prepare("UPDATE $table SET senha = :senha WHERE $id_field = :id");
+    try {
+        $stmt->execute(['senha' => $hashedNova, 'id' => $id]);
+        header("Location: ../html/PAG_DIRE.html?sucesso=1");
+    } catch (PDOException $e) {
+        jsonResponse(['error' => 'Erro ao alterar senha: ' . $e->getMessage()], 500);
+    }
+}
+
 function handleUpdateScheduleStatus() {
     // Verifica se o método da requisição é POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -163,4 +208,17 @@ function handleUpdateScheduleStatus() {
         jsonResponse(['error' => 'Erro ao atualizar: ' . $e->getMessage()], 500);
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? '';
+
+    if ($action === 'login') {
+        handleLoginDirecao();
+    } elseif ($action === 'register_book') {
+        handleRegisterBook();
+    } elseif ($action === 'change_password') {
+        handleChangePassword();
+    }
+}
+
 ?>

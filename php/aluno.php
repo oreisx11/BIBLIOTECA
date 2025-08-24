@@ -89,7 +89,7 @@ function handleLoginAluno() {
 
     startSession();
     $_SESSION['aluno_id'] = $user['id_aluno'];
-    jsonResponse(['success' => 'Login realizado com sucesso']);
+    header("Location: ../html/PAG_ALUNO.html");
 }
 
 function handleLogout($type) {
@@ -194,49 +194,5 @@ function handleMySchedules() {
     $schedules = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     jsonResponse(['schedules' => $schedules]);
-}
-
-function handleChangePassword($type) {
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        jsonResponse(['error' => 'Método não permitido'], 405);
-    }
-
-    if (!isLoggedIn($type)) {
-        jsonResponse(['error' => 'Não autenticado'], 401);
-    }
-
-    global $pdo;
-    $senha_atual = $_POST['senha_atual'] ?? '';
-    $nova_senha = $_POST['nova_senha'] ?? '';
-    $confirmar_senha = $_POST['confirmar_senha'] ?? '';
-
-    if (empty($senha_atual) || empty($nova_senha) || empty($confirmar_senha)) {
-        jsonResponse(['error' => 'Campos obrigatórios faltando'], 400);
-    }
-
-    if ($nova_senha !== $confirmar_senha) {
-        jsonResponse(['error' => 'Senhas não coincidem'], 400);
-    }
-
-    $id = getLoggedUserId($type);
-    $table = $type === 'aluno' ? 'alunos' : 'diretores';
-    $id_field = $type === 'aluno' ? 'id_aluno' : 'id_diretor';
-
-    $stmt = $pdo->prepare("SELECT senha FROM $table WHERE $id_field = :id");
-    $stmt->execute(['id' => $id]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$user || !verifyPassword($senha_atual, $user['senha'])) {
-        jsonResponse(['error' => 'Senha atual inválida'], 401);
-    }
-
-    $hashedNova = hashPassword($nova_senha);
-    $stmt = $pdo->prepare("UPDATE $table SET senha = :senha WHERE $id_field = :id");
-    try {
-        $stmt->execute(['senha' => $hashedNova, 'id' => $id]);
-        jsonResponse(['success' => 'Senha alterada com sucesso']);
-    } catch (PDOException $e) {
-        jsonResponse(['error' => 'Erro ao alterar senha: ' . $e->getMessage()], 500);
-    }
 }
 ?>
